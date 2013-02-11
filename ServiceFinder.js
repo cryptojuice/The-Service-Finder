@@ -16,7 +16,6 @@ if (Meteor.isClient) {
       var name = $('#name').val();
       var description = $('#description').val();
       Services.insert({'name': name, 'description':description});
-      Services.save()
       }
   };
 }
