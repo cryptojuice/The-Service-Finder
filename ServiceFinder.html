@@ -1,0 +1,17 @@
+<head>
+  <title>ServiceFinder</title>
+</head>
+
+<body>
+  <h1>Welcome to the Service Finder</h1>
+  {{> services}}
+</body>
+
+<template name="services">
+  {{#each service}}
+  <div id={{_id}} class="container">
+    <h3>{{name}}</h3>
+    <p>{{description}}</p>
+  </div>
+  {{/each}}
+</template>
