@@ -1,13 +1,23 @@
 if (Meteor.isClient) {
   Services = new Meteor.Collection("test-services");  
-  Meteor.subscribe("test-services");
 
   Template.services.service = function ()   {
     return Services.find();
   };
 
   Template.services.events = {
-    'click div': function(event){ console.log(event.currentTarget)}
+    'click div': function(event){ 
+      console.log(event.currentTarget)},
+    'click #delete': function(event){Services.remove({_id:this._id});}
+  };
+
+  Template.newServiceForm.events = {
+    'click #submit': function(event){
+      var name = $('#name').val();
+      var description = $('#description').val();
+      Services.insert({'name': name, 'description':description});
+      Services.save()
+      }
   };
 }
 

@@ -4,8 +4,17 @@
 
 <body>
   <h1>Welcome to the Service Finder</h1>
+  {{> newServiceForm}}
   {{> services}}
 </body>
+
+<template name="newServiceForm">
+    <label>Service/Application Name:</label>
+    <input type="text" id="name">
+    <label>Description:</label>
+    <textarea rows="10" cols="50" id="description"></textarea>
+    <input type="submit" value="Submit" id="submit">
+</template>
 
 <template name="services">
   {{#each service}}
@@ -13,5 +22,6 @@
     <h3>{{name}}</h3>
     <p>{{description}}</p>
   </div>
+  <button id="delete">Delete</button>
   {{/each}}
 </template>
