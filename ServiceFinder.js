@@ -1,4 +1,9 @@
 if (Meteor.isClient) {
+  Meteor.Router.add({
+    '/': 'services',
+    '/add': 'newServiceForm'
+  });
+
   Services = new Meteor.Collection("test-services");  
 
   Template.services.service = function ()   {
