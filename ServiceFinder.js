@@ -6,9 +6,9 @@ if (Meteor.isClient) {
   };
 
   Template.services.events = {
-    'click div': function(event){ 
-      console.log(event.currentTarget)},
-    'click #delete': function(event){Services.remove({_id:this._id});}
+    'click .delete': function(event){
+      Services.remove({_id:this._id});
+    }
   };
 
   Template.newServiceForm.events = {
