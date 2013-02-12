@@ -12,7 +12,10 @@ if (Meteor.isClient) {
 
   Template.services.events = {
     'click .delete': function(event){
+      var confirmed = (confirm("Are you sure?"));
+      if (confirmed) {
       Services.remove({_id:this._id});
+      }
     }
   };
 
