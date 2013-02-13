@@ -10,7 +10,7 @@ if (Meteor.isClient) {
     if(Session.get('search_query') === undefined || Session.get('search_query') === "") {
       return Services.find();
     }
-    return Services.find({'name': {$regex: Session.get("search_query")}});
+    return Services.find({'name': {$regex: Session.get("search_query"), $options: 'i'}});
   };
 
   Template.services.events = {
