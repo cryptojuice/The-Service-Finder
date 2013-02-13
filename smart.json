@@ -1,5 +1,9 @@
 {
   "packages": {
-    "router": {}
+    "HTML5-History-API": {},
+    "router": {
+      "git": "https://github.com/tmeasday/meteor-router.git",
+      "branch": "ie-support"
+    }
   }
 }

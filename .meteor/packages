@@ -7,5 +7,5 @@ insecure
 preserve-inputs
 autopublish
 backbone
-router
 bootstrap
+router
