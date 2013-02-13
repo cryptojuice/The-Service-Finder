@@ -1,1 +1,10 @@
 /* CSS declarations go here */
+body {
+  background: #E4E4E4;
+}
+
+.line-separator {
+  height:1px;
+  background:#E3E3E3;
+  border-bottom:1px solid #E3E3E3;
+}

@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
   Meteor.Router.add({
     '/': 'services',
-    '/add': 'newServiceForm'
+    '/add': 'serviceForm'
   });
 
   Services = new Meteor.Collection("test-services");  
@@ -26,21 +26,11 @@ if (Meteor.isClient) {
     }
   };
 
-  Template.newServiceForm.events = {
+  Template.serviceForm.events = {
     'click #submit': function(event){
       var name = $('#name').val();
       var description = $('#description').val();
       Services.insert({'name': name, 'description':description});
       }
   };
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-    Services = new Meteor.Collection("test-services");
-    if (Services.find().count() === 0) {
-      Services.insert({name: "Initial data", description: "This is test data"});
-    };
-  });
 }
