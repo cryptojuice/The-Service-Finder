@@ -7,15 +7,22 @@ if (Meteor.isClient) {
   Services = new Meteor.Collection("test-services");  
 
   Template.services.service = function ()   {
-    return Services.find();
+    if(Session.get('search_query') === undefined || Session.get('search_query') === "") {
+      return Services.find();
+    }
+    return Services.find({'name': {$regex: Session.get("search_query")}});
   };
 
   Template.services.events = {
-    'click .delete': function(event){
+    'click .icon-trash': function(event){
       var confirmed = (confirm("Are you sure?"));
       if (confirmed) {
       Services.remove({_id:this._id});
       }
+    },
+    'keyup #search': function(event){
+      console.log(event.currentTarget.value);
+      Session.set("search_query", event.currentTarget.value);
     }
   };
 

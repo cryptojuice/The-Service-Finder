@@ -1,0 +1,62 @@
+<head>
+  <title>ServiceFinder</title>
+</head>
+
+<body>
+  {{> navigation}}
+  {{renderPage}}
+</body>
+
+<template name="navigation">
+  <div class="navbar">
+    <div class="navbar-search pull-right">
+    <input type="text" class="span3 search-query" id="search">
+    <button type="submit" class="btn">Search</button>
+  </div>
+
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/">The Service Finder</a>
+        <a class="btn" href="/">Home</a>
+        <a class="btn" href="add">Add</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="newServiceForm">
+    <fieldset>
+        <legend>Add a new Service or Application</legend>
+
+        <label>Service Name:</label>
+        <input type="text" id="name" placeholder="Example: A&PO">
+
+        <label>Description:</label>
+        <textarea rows="5" cols="60" id="description"></textarea>
+
+        <br/>
+        <button type="submit" id="submit" class="btn">Submit</button>
+    </fieldset>
+</template>
+
+<template name="services">
+  <input type="text" class="span3 search-query" id="search">
+
+  {{#each service}}
+  <div class= "container">
+    <div class="span2">
+    <img src="placeholder.jpg" class="img-polaroid">
+    </div>
+    <div class="span8">
+    <h4>{{name}}</h3>
+    <p>{{description}}</p>  
+
+    <i class="icon-trash"></i>
+    <span>Delete</span>
+
+    <i class="icon-edit"></i>
+    <span>Edit</span>
+    </div>
+  </div>
+  {{/each}}
+</template>
