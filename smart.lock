@@ -2,7 +2,7 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "4d98d8cb4e5a95e9e98953f44c872c9332a042a3"
+    "commit": "405cd9e86c6336bd9aaa7a8f240bb9815dceed2d"
   },
   "dependencies": {
     "basePackages": {
@@ -10,8 +10,7 @@
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
         "branch": "ie-support"
-      },
-      "aloha-editor": {}
+      }
     },
     "packages": {
       "HTML5-History-API": {
@@ -22,12 +21,7 @@
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
         "branch": "ie-support",
-        "commit": "eb80343edd4e5b878c8f27f3ba545a79128d90a0"
-      },
-      "aloha-editor": {
-        "git": "https://github.com/evo42/meteor-aloha-editor.git",
-        "tag": "v0.1.2",
-        "commit": "0f903efa86abc6aabb112f772468ef5e7aaa3577"
+        "commit": "50a5b5457b513879ea05f8c337aa437d6ad8e753"
       },
       "page-js": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
