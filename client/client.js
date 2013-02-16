@@ -13,7 +13,13 @@ if (Meteor.isClient) {
     return Services.find({'name': {$regex: Session.get("search_query"), $options: 'i'}});
   };
 
-  Template.services.events = {
+
+  Template.body.events = {
+    'click #submit': function(event){
+      var name = $('#name').val();
+      var description = $('#description').val();
+      Services.insert({'name': name, 'description':description});
+    },
     'click .icon-trash': function(event){
       var confirmed = (confirm("Are you sure?"));
       if (confirmed) {
@@ -24,13 +30,6 @@ if (Meteor.isClient) {
       console.log(event.currentTarget.value);
       Session.set("search_query", event.currentTarget.value);
     }
-  };
 
-  Template.serviceForm.events = {
-    'click #submit': function(event){
-      var name = $('#name').val();
-      var description = $('#description').val();
-      Services.insert({'name': name, 'description':description});
-      }
   };
 }
