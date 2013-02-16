@@ -28,40 +28,30 @@
     </div>
     <div class="control-group">
       <label>Description:</label>
-      <textarea rows="5" cols="60" id="description"></textarea>
+      <textarea class="field span12" rows="8" id="description"></textarea>
       <button type="submit" id="submit" class="btn">Submit</button>
     </div>
   </div>
 </template>
 
 <template name="services">
-  <div class="sidebar">
-  </div>
-
   {{#each service}}
-    <div class="span2">
-      <img src="{{_id}}.jpg" class="img-polaroid">
-    </div>
-
     <div class="span8">
       <a href="{{_id}}"><h4>{{name}}</h3></a>
-        <p>{{description}}</p>  
-
-      <i class="icon-trash"></i>
-      <span>Delete</span>
-
-      <i class="icon-edit"></i>
-      <span>Edit</span>
     </div>
   {{/each}}
   </template>
 
+  <template name="showService">
+  <legend><h2>{{service.name}}</h2></legend>
+  {{{service.description}}}
+  <i class="icon-trash"></i>
+  </template>
+
+
   <template name="body">
   {{> navigation}}
   <div class="container">
-    <div class="hero-unit">
-      <p>Find information on services, application, and various projects useful to Pernod Ricard.</p>
-    </div>
     {{renderPage}}
   </div>
   </template>

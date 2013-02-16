@@ -1,7 +1,11 @@
 if (Meteor.isClient) {
   Meteor.Router.add({
     '/': 'services',
-    '/add': 'serviceForm'
+    '/add': 'serviceForm',
+    '/:id': function(id) {
+      Session.set('currentServiceId', id);
+      return 'showService'
+    }
   });
 
   Services = new Meteor.Collection("test-services");  
@@ -13,17 +17,27 @@ if (Meteor.isClient) {
     return Services.find({'name': {$regex: Session.get("search_query"), $options: 'i'}});
   };
 
+  Template.showService.service = function () {
+    console.log(Services.findOne({'_id':Session.get('currentServiceId')}));
+    return Services.findOne({'_id':Session.get('currentServiceId')});
+  };
+
 
   Template.body.events = {
     'click #submit': function(event){
+      var converter = new Showdown.converter();
+
       var name = $('#name').val();
       var description = $('#description').val();
-      Services.insert({'name': name, 'description':description});
+
+      var markedDesc = converter.makeHtml(description); 
+
+      Services.insert({'name': name, 'description':markedDesc});
     },
     'click .icon-trash': function(event){
       var confirmed = (confirm("Are you sure?"));
       if (confirmed) {
-      Services.remove({_id:this._id});
+      Services.remove({_id:Session.get('currentServiceId')});
       }
     },
     'keyup #search': function(event){
