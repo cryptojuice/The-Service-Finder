@@ -24,13 +24,18 @@
     <legend>Add a new Service or Application</legend>
     <div class="control-group">
       <label>Service Name:</label>
-      <input type="text" id="name" placeholder="Example: A&PO">
+      <input type="text" id="name" placeholder="Example: A&PO" required>
     </div>
     <div class="control-group">
       <label>Description:</label>
       <textarea class="field span12" rows="8" id="description"></textarea>
-      <button type="submit" id="submit" class="btn">Submit</button>
+      <button id="submit" class="btn">Submit</input>
     </div>
+  </div>
+
+  <div class="preview">
+  </div>
+  <div id="formAlert">
   </div>
 </template>
 

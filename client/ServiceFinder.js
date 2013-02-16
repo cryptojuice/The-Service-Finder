@@ -18,7 +18,6 @@ if (Meteor.isClient) {
   };
 
   Template.showService.service = function () {
-    console.log(Services.findOne({'_id':Session.get('currentServiceId')}));
     return Services.findOne({'_id':Session.get('currentServiceId')});
   };
 
@@ -32,7 +31,13 @@ if (Meteor.isClient) {
 
       var markedDesc = converter.makeHtml(description); 
 
-      Services.insert({'name': name, 'description':markedDesc});
+      if (name === "" || name === undefined) {
+        $('#formAlert').append('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Please fill in the "Name" field.</strong></div>');
+      } else {
+        
+        Services.insert({'name': name, 'description':markedDesc});
+        $('#formAlert').html('<div class="alert alert-success"><strong>Success</strong></div>');
+      }
     },
     'click .icon-trash': function(event){
       var confirmed = (confirm("Are you sure?"));
@@ -41,8 +46,14 @@ if (Meteor.isClient) {
       }
     },
     'keyup #search': function(event){
-      console.log(event.currentTarget.value);
       Session.set("search_query", event.currentTarget.value);
+    },
+    'keyup #description': function(event){
+      var converter = new Showdown.converter();
+      var description = $('#description').val();
+      var markedDesc = converter.makeHtml(description);
+
+      $('.preview').html(markedDesc);
     }
 
   };
