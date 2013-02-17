@@ -1,5 +1,5 @@
 <head>
-  <title>ServiceFinder</title>
+  <title>The Service Finder</title>
 </head>
 
 <body>
@@ -45,13 +45,15 @@
       <a href="{{_id}}"><h4>{{name}}</h3></a>
     </div>
   {{/each}}
-  </template>
+</template>
 
-  <template name="showService">
+<template name="showService">
+  <div class="postcontainer">
   <legend><h2>{{service.name}}</h2></legend>
   {{{service.description}}}
   <i class="icon-trash"></i>
-  </template>
+  </div>
+</template>
 
 
   <template name="body">
