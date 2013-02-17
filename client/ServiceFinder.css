@@ -8,3 +8,12 @@ body {
   background:#E3E3E3;
   border-bottom:1px solid #E3E3E3;
 }
+
+.postcontainer {
+  display: inline-block;
+  background-color: #FAFAFA;
+  width:600px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  padding:0px 20px 0px 20px;
+}
