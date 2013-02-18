@@ -35,7 +35,7 @@ if (Meteor.isClient) {
         $('#formAlert').append('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Please fill in the "Name" field.</strong></div>');
       } else {
         
-        Services.insert({'name': name, 'description':markedDesc});
+        Services.insert({'name': name, 'description':markedDesc, 'description_md':description});
         $('#formAlert').html('<div class="alert alert-success"><strong>Success</strong></div>');
       }
     },
@@ -54,7 +54,10 @@ if (Meteor.isClient) {
       var markedDesc = converter.makeHtml(description);
 
       $('.preview').html(markedDesc);
-    }
+    },
+    'click .icon_edit': function(event){
 
+      $('#description').val(Services.findOne({'_id':Session.get('currentServiceId')}).description_md); 
+    }
   };
 }
