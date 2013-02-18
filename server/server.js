@@ -3,7 +3,9 @@ if (Meteor.isServer) {
     // code to run on server at startup
     Services = new Meteor.Collection("test-services");
     if (Services.find().count() === 0) {
-      Services.insert({name: "Initial data", description: "This is test data"});
+      for (var i = 0; i < 50; i++) {
+        Services.insert({name: "Initial data " + i, description: "This is test data"});
+      };
     };
   });
 }
