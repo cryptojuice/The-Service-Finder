@@ -55,9 +55,20 @@ if (Meteor.isClient) {
 
       $('.preview').html(markedDesc);
     },
-    'click .icon_edit': function(event){
+    'click #editme': function(event){
+      $('.postcontainer').html('<div class="form-horizontal"><legend>Add a new Service or Application</legend><div class="control-group"><label>Service Name:</label><input type="text" id="name" placeholder="Example: A&PO" required></div><div class="control-group"><label>Description:</label><textarea class="field span12" rows="8" id="description"></textarea><button id="update" class="btn">Update</input></div></div><div class="preview"></div><div id="formAlert"></div>');
 
+      $('#name').val(Services.findOne({'_id':Session.get('currentServiceId')}).name); 
       $('#description').val(Services.findOne({'_id':Session.get('currentServiceId')}).description_md); 
+    },
+    'click #update': function(event){
+      console.log('updating');
+      var converter = new Showdown.converter();
+      var name = $('#name').val();
+      var description = $('#description').val();
+      var markedDesc = converter.makeHtml(description);
+
+      Services.update({'_id':Session.get('currentServiceId')},{'name': name, 'description':markedDesc, 'description_md':description});
     }
   };
 }
